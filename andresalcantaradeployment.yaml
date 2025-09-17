@@ -1,46 +1,46 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: treasure-ana
+  name: treasure-andresalcantara
   namespace: treasure-hunt
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: treasure-ana
+      app: treasure-andresalcantara
   template:
     metadata:
       labels:
-        app: treasure-ana
+        app: treasure-andresalcantara
     spec:
       containers:
         - name: web
-          image: ghcr.io/fredyunivalle/treasure-new:latest
+          image: ghcr.io/andresalcantaram/treasure-new:latest
           ports:
             - containerPort: 80
           env:
             - name: TITLE
-              value: "Treasure Hunt — Fredy"
+              value: "Treasure Hunt — Andres Alcantara"
             - name: STUDENT
-              value: "Fredy"
+              value: "Andres Alcantara"
             - name: SALT
               value: "DS3univalle"
             - name: KEY_HASH
-              value: "e03071406de634efb44ae42fb52a19523ac5646281b91de291133e2c37106da0"
+              value: "e1a9d389e88bd6f158b6c01edbf5e9e78bd56e7641c272a4a4a48ec6fbf14d79"
             - name: CLUE
               valueFrom:
                 secretKeyRef:
-                  name: ana-clue
+                  name: andresalcantara-clue
                   key: CLUE
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: treasure-ana
+  name: treasure-andresalcantara
   namespace: treasure-hunt
 spec:
   selector:
-    app: treasure-ana
+    app: treasure-andresalcantara
   ports:
     - name: http
       port: 80
